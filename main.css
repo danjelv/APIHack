@@ -1,0 +1,45 @@
+body
+{
+	font-family: 'Roboto', sans-serif;
+}
+
+.img-circle
+{
+	border-radius: 50%;
+	margin-right: 5px;
+	width:50px;
+}
+
+.insta-name
+{
+    color: #125688;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.img-thumbnail
+{
+	widows: 80%;
+}
+
+.refreshbtn
+{
+	float:right;
+	background-color: #acbcc9;
+	border-color: #acbcc9;
+	margin-top:-50px;
+}
+
+.page-header{
+  width:100%;
+}
+
+.location-canvas{
+	width:100%;
+	height:500px;
+}
+
+.col-md-4
+{
+    padding-top: 10px;
+}
