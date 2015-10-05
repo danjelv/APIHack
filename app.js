@@ -5,7 +5,11 @@ var longitude;
 $(document).ready( function() {
 	$('.refreshbtn').on('click', function() {
 		   initializeInstagram();
-		  });		  
+		  });		
+
+  setInterval(function() {
+    initializeInstagram();
+  }, 60 * 1000);         
 
 });
 
@@ -21,13 +25,13 @@ function initializeInstagram()
            var apiUrl = "https://api.instagram.com/v1/users/self/feed?access_token=3697165.5d14b76.9096ac4c6e7f46ab8c3ab9985fa9b56f&callback=?"
 
            function success (instagramData) {
-
+            $('.results').empty();
 
              if (instagramData.meta.code != 200) {
                // If we don't get a 200 that means instagram threw an error.
 
                $('.results').html('<h1>An Error Occured</h1><p>' + instagramData.meta.error_message + '</p>');
-               return
+               return false;
              }
 
              $.each(instagramData.data, function(index, gram) {
@@ -52,7 +56,7 @@ function initializeInstagram()
                                       '<a href="'+ gram.link +' target="_blank"><video class="img-thumbnail" src="' + gram.videos.low_resolution.url + '"/></a>' +
                                       '</div>')
                }*/
-				}
+				      }
              });
 
 				initialize();
@@ -75,6 +79,8 @@ function initializeInstagram()
         var laa=51.552552;
         var lonn= -0.174902;
 
+        //navigation.geolocation
+
         var mapOptions =
         {
             zoom: 10,
@@ -88,14 +94,14 @@ function initializeInstagram()
         var map = new google.maps.Map(document.getElementById('location-canvas'),
             mapOptions);
 
- 		var image = new google.maps.MarkerImage('http://googlemaps.googlermania.com/img/marker_flag.png');
-		image.size = new google.maps.Size(35, 35);
+        var image = new google.maps.MarkerImage('http://googlemaps.googlermania.com/img/marker_flag.png');
+        image.size = new google.maps.Size(35, 35);
 
         var marker = new google.maps.Marker({
-            map: map,
-            draggable: false,
-            position: new google.maps.LatLng(laa, lonn),
-			icon: image
+          map: map,
+          draggable: false,
+          position: new google.maps.LatLng(laa, lonn),
+          icon: image
         });
 
 		var contentString = "Your current location";
